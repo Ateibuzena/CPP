@@ -1,4 +1,4 @@
-# 42 Málaga - C++ Modules Repository
+# 42 Málaga - C++ Modules
 
 ## Overview
 This repository contains all the C++ modules and exercises that I am completing as part of the 42 Málaga curriculum (Fundación Telefónica).  
