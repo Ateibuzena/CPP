@@ -5,14 +5,16 @@ This repository contains all the C++ modules and exercises that I am completing 
 Each module is organized in its own folder (e.g., `M_00`, `M_01`), with subfolders for each exercise.
 
 ## Structure
-/ (root)
-├── M_00/ # Module 00: Basics of C++
-│ ├── ex00/ # Exercise 00: Megaphone
-│ ├── ex01/ # Exercise 01: My Awesome PhoneBook
-│ └── ex02/ # Exercise 02: The Job Of Your Dreams
-├── M_01/ # Module 01 (future exercises)
-│ └── ex00/ # Exercise 00 (future)
-└── README.md # This file
+```
+  / (root)
+  ├── M_00/ # Module 00: Basics of C++
+  │ ├── ex00/ # Exercise 00: Megaphone
+  │ ├── ex01/ # Exercise 01: My Awesome PhoneBook
+  │ └── ex02/ # Exercise 02: The Job Of Your Dreams
+  ├── M_01/ # Module 01 (future exercises)
+  │ └── ex00/ # Exercise 00 (future)
+  └── README.md # This file
+```
 
 ## Modules and Exercises
 
