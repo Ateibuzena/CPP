@@ -1,10 +1,14 @@
 #include "../include/Account.hpp"
+#include <string>
+#include <cctype>
+#include <iostream> 
+#include <ctime>
 
 /*init static atributes*/
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
-int Account::_total_NbWithdrawals = 0;
+int Account::_totalNbWithdrawals = 0;
 
 /*Constructor function*/
 Account::Account(int initial_deposit)
@@ -36,14 +40,13 @@ void    Account::makeDeposit(int deposit)
     _displayTimestamp();
     std::cout << "index:" << _accountIndex
               << ";p_amount:" << _amount
-              << ";deposit:" << deposit
-              << std::endl;
+              << ";deposit:" << deposit;
 
     _amount += deposit;
     _nbDeposits++;
     _totalAmount += deposit;
     _totalNbDeposits++;
-    std::cout << "index:" << _accountIndex
+    std::cout << ";amount:" << _amount
               << ";nb_deposits:" << _nbDeposits
               << std::endl;
 }
@@ -63,10 +66,10 @@ bool    Account::makeWithdrawal(int withdrawal)
     _amount -= withdrawal;
     _nbWithdrawals++;
     _totalAmount -= withdrawal;
-    _total_NbWithdrawals++;
+    _totalNbWithdrawals++;
 
     std::cout << ";withdrawal:" << withdrawal
-              << ";amount" << _amount
+              << ";amount:" << _amount
               << ";nb_withdrawals:" << _nbWithdrawals
               << std::endl;
 
@@ -83,18 +86,18 @@ void    Account::displayStatus(void) const
     _displayTimestamp();
     std::cout << "index:" << _accountIndex
               << ";amount:" << _amount
-              << ";deposit:" << _nbDeposits
+              << ";deposits:" << _nbDeposits
               << ";withdrawals:" << _nbWithdrawals
               << std::endl;
 }
 
-void Account::displayAccountInfos(void)
+void Account::displayAccountsInfos(void)
 {
     _displayTimestamp();
     std::cout << "accounts:" << _nbAccounts
              << ";total:" << _totalAmount
              << ";deposits:" << _totalNbDeposits
-             << ":withdrawals:" << _total_NbWithdrawals
+             << ";withdrawals:" << _totalNbWithdrawals
              << std::endl;          
 }
 
@@ -107,4 +110,25 @@ void    Account::_displayTimestamp(void)
     char        buffer[20];
     std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S]", time);
     std::cout << buffer << " ";
+}
+
+/*getters methods*/
+int Account::getNbAccounts(void)
+{
+    return (_nbAccounts);
+}
+
+int Account::getTotalAmount(void)
+{
+    return (_totalAmount);
+}
+
+int Account::getNbDeposits(void)
+{
+    return (_totalNbDeposits);
+}
+
+int Account::getNbWithdrawals(void)
+{
+    return (_totalNbWithdrawals);
 }

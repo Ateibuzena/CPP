@@ -53,7 +53,11 @@ int main(void)
     {
         std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
         std::getline(std::cin, temp);
-
+        if (std::cin.eof())
+        {
+            std::cout << "\nEOF detected. Exiting." << std::endl;
+            break ;
+        }
         size_t i = 0;
 
         command.clear();

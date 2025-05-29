@@ -1,4 +1,8 @@
 #include "../include/Account.hpp"
+#include <string>
+#include <cctype>
+#include <iostream> 
+#include <ctime>
 
 int clearInputBuffer()
 {
@@ -37,6 +41,11 @@ int main(void)
     {
         showMenu();
         std::cin >> choice;
+        if (std::cin.eof())
+        {
+            std::cout << "\nEOF received. Exiting program...\n";
+            break ;
+        }
         if (std::cin.fail())
         {
             std::cin.clear();
@@ -48,7 +57,7 @@ int main(void)
         {
             case 1:
             {
-                Account::displayAccountInfos();
+                Account::displayAccountsInfos();
                 break ;
             }
             case 2:
