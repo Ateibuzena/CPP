@@ -1,6 +1,6 @@
 #include "Zombie.hpp"
 
-void    randomChump(const std::string  nameValue)
+void    randomChump(const std::string&  nameValue)
 {
     Zombie  stackZombie;
 

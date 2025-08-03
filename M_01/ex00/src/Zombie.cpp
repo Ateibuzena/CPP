@@ -27,7 +27,7 @@ void    Zombie::setName(const std::string& nameValue)
 }
 
 
-const std::string&    Zombie::getName() const
+const std::string&    Zombie::getName(void) const
 {
     std::cout << _name << ": Get Name" << std::endl;
     return (_name);
