@@ -4,7 +4,7 @@ INCLUDES = -I include
 
 SRC = src/main.cpp src/Zombie.cpp src/zombieHorde.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = Zombies
+NAME = Horde
 
 all: $(NAME)
 
