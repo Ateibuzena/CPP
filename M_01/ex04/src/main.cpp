@@ -2,7 +2,7 @@
 
 static bool ft_check_args(int argc, char **argv)
 {
-    if (argc < 4)
+    if (argc != 4)
     {
         std::cout
             << "❌ Error: "

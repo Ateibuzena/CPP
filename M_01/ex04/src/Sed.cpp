@@ -6,7 +6,7 @@ Sed::Sed(const std::string& fileNameValue, const std::string& targetValue, const
         _replacement(replacementValue)
 {
     std::cout
-        << "ℹ️ "
+        << "ℹ️  "
         << _fileName
         << ": Parameterized constructor"
         << std::endl;
@@ -15,7 +15,7 @@ Sed::Sed(const std::string& fileNameValue, const std::string& targetValue, const
 Sed::~Sed()
 {
     std::cout
-        << "ℹ️ "
+        << "ℹ️  "
         << _fileName
         << ": Destructor"
         << std::endl;
