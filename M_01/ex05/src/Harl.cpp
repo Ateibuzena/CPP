@@ -37,36 +37,24 @@ void    Harl::complain(const std::string level)
 {
     int i = 0;
 
-    while (i < 4 && level != _levels[i])
-        i++;
-
-    switch(i)
+    while (i < 4)
     {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
+        if (level == _levels[i])
         {
-            while (i < 4)
-            {
-                (this->*_ft[i])();
-                std::cout << "---------------------------------------" << std::endl;
-                std::cout
-                    << _className
-                    << ": Can complain"
-                    << std::endl;
-                i++;
-            }
-            break ;
-        }
-        default:
-        {
+            (this->*_ft[i])();
+            std::cout << "---------------------------------------" << std::endl;
             std::cout
                 << _className
-                << ": Can not complain"
+                << ": Can complain"
                 << std::endl;
+            return ;
         }
+        i++;
     }
+    std::cout
+        << _className
+        << ": Can not complain"
+        << std::endl;
 }
 
 void    Harl::debug(void)
