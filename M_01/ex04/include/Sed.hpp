@@ -15,6 +15,7 @@ class   Sed
     
     public:
                         Sed(const std::string& fileNameValue, const std::string& targetValue, const std::string& replacementValue);
+                        ~Sed();
         bool            openFile(void);
         std::string     readFile(void);
         bool            replace(std::string& fileContent) const;

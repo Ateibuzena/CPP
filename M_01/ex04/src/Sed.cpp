@@ -5,7 +5,20 @@ Sed::Sed(const std::string& fileNameValue, const std::string& targetValue, const
         _target(targetValue),
         _replacement(replacementValue)
 {
+    std::cout
+        << "ℹ️ "
+        << _fileName
+        << ": Parameterized constructor"
+        << std::endl;
+}
 
+Sed::~Sed()
+{
+    std::cout
+        << "ℹ️ "
+        << _fileName
+        << ": Destructor"
+        << std::endl;
 }
 
 bool    Sed::openFile(void)
