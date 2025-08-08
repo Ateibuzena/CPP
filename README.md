@@ -11,7 +11,7 @@ Each module is organized in its own folder (e.g., `M_00`, `M_01`), with subfolde
   │ ├── ex00/ # Exercise 00: Megaphone
   │ ├── ex01/ # Exercise 01: My Awesome PhoneBook
   │ └── ex02/ # Exercise 02: The Job Of Your Dreams
-  ├── M_01/ # Module 01 (future exercises)
+  ├── M_01/ # Module 01: Memory allocation, pointers to members, references and switch statements
   │ ├── ex00/ # Exercise 01: BraiiiiiiinnnzzzZ
   │ ├── ex01/ # Exercise 01: Moar brainz!
   │ ├── ex02/ # Exercise 01: HI THIS IS BRAIN
