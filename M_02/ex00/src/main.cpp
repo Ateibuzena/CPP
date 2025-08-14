@@ -37,6 +37,17 @@ int main(void)
         std::cout << "-----------------------------------------" << std::endl;
         std::cout << c.getRawBits() << std::endl;
     }
+
+    {
+        std::cout << "-------------------BUGS---------------------" << std::endl;
+        Fixed f;
+        std::cout << "-----------------------------------------" << std::endl;
+        f.setRawBits(384); // 1.5 in Fixed point with 8 bits
+        std::cout << "-----------------------------------------" << std::endl;
+        std::cout << f.getRawBits() << std::endl; // result is not 1.5
+        std::cout << "-----------------------------------------" << std::endl;
+        //Fixed f(42.0f);  // Comppile error
+    }
     
     return (0);
 }
