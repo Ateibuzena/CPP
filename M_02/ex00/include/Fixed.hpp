@@ -6,7 +6,7 @@
 class   Fixed
 {
     private:
-        int _value;
+        int _rawBits;
         int _copy;
         static const int _bits = 8;
 
@@ -17,7 +17,7 @@ class   Fixed
                 
         Fixed&  operator=(const Fixed& object); //asignation operator
 
-        void    setRawBits(const int rawValue);
+        void    setRawBits(const int rawBitsValue);
         int     getRawBits(void) const;
 };
 

@@ -1,7 +1,7 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed()
-    :   _value(0),
+    :   _rawBits(0),
         _copy(0)
 {
     std::cout
@@ -11,7 +11,7 @@ Fixed::Fixed()
 }
 
 Fixed::Fixed(const Fixed& object)
-    :   _value(object._value),
+    :   _rawBits(object._rawBits),
         _copy(1)
 {
     std::cout
@@ -32,7 +32,7 @@ Fixed&  Fixed::operator=(const Fixed& object)
 {
     if (this != &object)
     {
-        _value = object._value;
+        _rawBits = object._rawBits;
         _copy = 1;
     }
     std::cout
@@ -42,9 +42,9 @@ Fixed&  Fixed::operator=(const Fixed& object)
     return (*this);
 }
 
-void    Fixed::setRawBits(const int rawValue)
+void    Fixed::setRawBits(const int rawBitsValue)
 {
-    _value = rawValue;
+    _rawBits = rawBitsValue;
     std::cout
         << _copy
         << ": Set rawbits"
@@ -57,5 +57,5 @@ int Fixed::getRawBits(void) const
         << _copy
         << ": Get rawbits"
         << std::endl;
-    return (_value);
+    return (_rawBits);
 }
