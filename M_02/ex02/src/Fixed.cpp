@@ -180,7 +180,7 @@ bool Fixed::operator!=(const Fixed& object) const
 
 /*-------------------------------ARITHMETIC OPERATORS-------------------------------*/
 
-Fixed   Fixed::operator+(const Fixed& object)
+Fixed   Fixed::operator+(const Fixed& object) const
 {
     std::cout
         << "\n"
@@ -195,7 +195,7 @@ Fixed   Fixed::operator+(const Fixed& object)
     return (result);
 }
 
-Fixed   Fixed::operator-(const Fixed& object)
+Fixed   Fixed::operator-(const Fixed& object) const
 {
     std::cout
         << "\n"
@@ -210,7 +210,7 @@ Fixed   Fixed::operator-(const Fixed& object)
     return (result);
 }
 
-Fixed   Fixed::operator*(const Fixed& object)
+Fixed   Fixed::operator*(const Fixed& object) const
 {
     std::cout
         << "\n"
@@ -224,7 +224,7 @@ Fixed   Fixed::operator*(const Fixed& object)
     return (result);
 }
 
-Fixed   Fixed::operator/(const Fixed& object)
+Fixed   Fixed::operator/(const Fixed& object) const
 {
     std::cout
         << "\n"
