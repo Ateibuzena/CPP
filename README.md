@@ -12,13 +12,19 @@ Each module is organized in its own folder (e.g., `M_00`, `M_01`), with subfolde
   │ ├── ex01/ # Exercise 01: My Awesome PhoneBook
   │ └── ex02/ # Exercise 02: The Job Of Your Dreams
   ├── M_01/ # Module 01: Memory allocation, pointers to members, references and switch statements
-  │ ├── ex00/ # Exercise 01: BraiiiiiiinnnzzzZ
+  │ ├── ex00/ # Exercise 00: BraiiiiiiinnnzzzZ
   │ ├── ex01/ # Exercise 01: Moar brainz!
-  │ ├── ex02/ # Exercise 01: HI THIS IS BRAIN
-  │ ├── ex03/ # Exercise 01: Unnecessary violence
-  │ ├── ex04/ # Exercise 01: Sed is for losers
-  │ ├── ex05/ # Exercise 01: Harl 2.0
-  │ └── ex06/ # Exercise 02: Harl filter
+  │ ├── ex02/ # Exercise 02: HI THIS IS BRAIN
+  │ ├── ex03/ # Exercise 03: Unnecessary violence
+  │ ├── ex04/ # Exercise 04: Sed is for losers
+  │ ├── ex05/ # Exercise 05: Harl 2.0
+  │ └── ex06/ # Exercise 06: Harl filter
+  ├── M_02/ # Module 02: Ad-hoc polymorphism, operator overloading 
+  and the Orthodox Canonical class form
+  │ ├── ex00/ # Exercise 00: My First Class in Orthodox Canonical Form
+  │ ├── ex01/ # Exercise 01: Towards a more useful fixed-point number class
+  │ ├── ex02/ # Exercise 02: Now we’re talking
+  │ └── ex03/ # Exercise 03: BSP
   └── README.md # This file
 ```
 
