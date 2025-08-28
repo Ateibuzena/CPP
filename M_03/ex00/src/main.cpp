@@ -107,9 +107,9 @@ int main(void)
         if (A.getHit() == B.getHit() && A.getHit() == 0)
             ft_print("", "DRAW");
         else if (A.getHit() == 0)
-            ft_print(a, " WIN");
-        else
             ft_print(b, " WIN");
+        else
+            ft_print(a, " WIN");
     }
     
     return (0);
