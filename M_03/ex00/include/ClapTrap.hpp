@@ -27,10 +27,10 @@ class   ClapTrap
         bool                getGame(void) const;
 
         void                setName(const std::string& nameValue);
-        void                setHit(const int& hitValue);
-        void                setEnergy(const int& energyValue);
-        void                setDamage(const int& damageValue);
-        void                setGame(const bool& gameValue);
+        void                setHit(const int hitValue);
+        void                setEnergy(const int energyValue);
+        void                setDamage(const int damageValue);
+        void                setGame(const bool gameValue);
 
         void                attack(const std::string& target);
         void                takeDamage(unsigned int amount);

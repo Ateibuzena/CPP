@@ -108,22 +108,22 @@ void    ClapTrap::setName(const std::string& nameValue)
     _name = nameValue;
 }
 
-void    ClapTrap::setHit(const int& hitValue)
+void    ClapTrap::setHit(const int hitValue)
 {
     _hit = hitValue;
 }
 
-void    ClapTrap::setEnergy(const int& energyValue)
+void    ClapTrap::setEnergy(const int energyValue)
 {
     _energy = energyValue;
 }
 
-void    ClapTrap::setDamage(const int& damageValue)
+void    ClapTrap::setDamage(const int damageValue)
 {
     _damage = damageValue;
 }
 
-void    ClapTrap::setGame(const bool& gameValue)
+void    ClapTrap::setGame(const bool gameValue)
 {
     _game = gameValue;
 }
