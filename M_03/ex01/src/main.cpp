@@ -31,7 +31,7 @@ int main(void)
 
         ft_print("", "ACTUAL STATE");
         A.printState();
-        B.printState(); /*not virtual method, call printstate claptrap*/
+        B.printState(); /*not virtual method, her call scav method*/
 
         int turn = 0; 
         while (A.getGame() && B.getGame())
@@ -124,26 +124,27 @@ int main(void)
         ScavTrap* child = new ScavTrap("child");
         ClapTrap* claptrap_child = child; //pointer conversion, upcasting
         std::cout << "-------------------------------" << std::endl;
+
         ClapTrap* father = new ClapTrap("father");
         std::cout << "-------------------------------" << std::endl;
+
         /*virtual, call father method*/
         father->attack("🐛");          // ClapTrap::attack ✅ polymorphism 
 
         /*virtual, call child method*/
-        claptrap_child->attack("🐛");  // ScavTrap::attack ✅ polymorphism
-
-        /*virtual, call child method*/
         child->attack("🐛");           // ScavTrap::attack ✅ polymorphism
 
+        /*virtual, call child method*/
+        claptrap_child->attack("🐛");  // ScavTrap::attack ✅ polymorphism
 
         /*not virtual, call father method*/
         father->printState();          // ClapTrap::printState ❌ not polymorphism
 
         /*not virtual, call father method*/
-        claptrap_child->printState();  // ClapTrap::printState ❌ not polymorphism
+        child->printState();           // ClapTrap::printState ❌ not polymorphism
 
         /*not virtual, call father method*/
-        child->printState();           // ClapTrap::printState ❌ not polymorphism
+        claptrap_child->printState();  // ClapTrap::printState ❌ not polymorphism
 
         /*virtual, call father method*/
         delete father;                 // ClapTrap::~ClapTrap ✅ polymorphism

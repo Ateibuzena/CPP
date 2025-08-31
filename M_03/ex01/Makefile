@@ -1,4 +1,4 @@
-NAME = Open
+NAME = Serena
 
 CC = c++
 
