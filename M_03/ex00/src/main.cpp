@@ -22,8 +22,8 @@ static int clearInputBuffer()
 
 int main(void)
 {
-    const std::string   a = "🐛";
-    const std::string   b = "🐞";
+    const std::string   a = "🐞";
+    const std::string   b = "🐛";
 
     ClapTrap A(a);
     ClapTrap B(b);
@@ -54,8 +54,7 @@ int main(void)
                 << "        Select a choice:\n"
                 << "        1. ATTACK 💥\n"
                 << "        2. REPAIR 🔧\n"
-                << "        3. GATE KEEPER 🚪 (ScavTrap only)\n"
-                << "        4. EXIT\n"
+                << "        3. EXIT\n"
                 << "        Choice: ";
 
         int choice;
@@ -97,9 +96,12 @@ int main(void)
             turn = 1;
         else
             turn = 0;
-        ft_print("", "ACTUAL STATE");
-        A.printState();
-        B.printState();
+        if (A.getGame() && B.getGame())
+        {
+            ft_print("", "ACTUAL STATE");
+            A.printState();
+            B.printState();
+        }
     }
 
     if (!A.getHit() || !B.getHit())

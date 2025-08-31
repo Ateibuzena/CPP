@@ -243,11 +243,6 @@ void    ClapTrap::printState(void) const
 {
     if (!_game)
     {
-        std::cout
-            << "\nClapTrap "
-            << _name
-            << " is out of combat\n"
-            << std::endl;
         return ;
     }
 
