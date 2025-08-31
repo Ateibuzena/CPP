@@ -51,12 +51,12 @@ int main(void)
         ft_print(attacker->getName(), " TURN");
         
         std::cout
-            << "Select a choice:\n"
-            << "1. ATTACK 💥\n"
-            << "2. REPAIRED 🔧\n"
-            << "3. EXIT 🚪\n"
-            << "Choice: "
-            << std::endl;
+                << "        Select a choice:\n"
+                << "        1. ATTACK 💥\n"
+                << "        2. REPAIR 🔧\n"
+                << "        3. GATE KEEPER 🚪 (ScavTrap only)\n"
+                << "        4. EXIT\n"
+                << "        Choice: ";
 
         int choice;
 

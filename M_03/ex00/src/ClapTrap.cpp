@@ -135,6 +135,7 @@ void    ClapTrap::attack(const std::string& target)
     if (!_game)
     {
         std::cout
+            << "\nClapTrap "
             << _name
             << " is out of combat"
             << std::endl;
@@ -143,6 +144,7 @@ void    ClapTrap::attack(const std::string& target)
     if (!_energy)
     {
         std::cout
+            << "\nClapTrap "
             << _name
             << " can't attack"
             << std::endl;
@@ -152,7 +154,7 @@ void    ClapTrap::attack(const std::string& target)
     _energy -= 1;
 
     std::cout
-        << "\n"
+        << "\nClapTrap "
         << _name
         << " attacks "
         << target
@@ -169,6 +171,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
     if (!_game)
     {
         std::cout
+            << "\nClapTrap "
             << _name
             << " is out of combat"
             << std::endl;
@@ -181,7 +184,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
         _hit = 0;
 
     std::cout
-        << "\n"
+        << "\nClapTrap "
         << _name
         << " recive "
         << amount
@@ -192,6 +195,7 @@ void    ClapTrap::takeDamage(unsigned int amount)
     {
         _game = false;
         std::cout
+            << "\nClapTrap "
             << _name
             << " is out of combat"
             << std::endl;
@@ -204,6 +208,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
     if (!_game)
     {
         std::cout
+            << "\nClapTrap "
             << _name
             << " is out of combat"
             << std::endl;
@@ -213,6 +218,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
     if (!_energy)
     {
         std::cout
+            << "\nClapTrap "
             << _name
             << " can't be repaired"
             << std::endl;
@@ -238,13 +244,15 @@ void    ClapTrap::printState(void) const
     if (!_game)
     {
         std::cout
+            << "\nClapTrap "
             << _name
-            << " is out of combat"
+            << " is out of combat\n"
             << std::endl;
         return ;
     }
 
     std::cout
+        << "\n        ClapTrap\n"
         << "        Name: "
         <<  _name
         << "\n        Hit points: "
