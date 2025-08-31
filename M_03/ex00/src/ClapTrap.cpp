@@ -242,9 +242,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
 void    ClapTrap::printState(void) const
 {
     if (!_game)
-    {
         return ;
-    }
 
     std::cout
         << "\n        ClapTrap\n"
