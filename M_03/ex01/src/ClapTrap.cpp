@@ -4,9 +4,9 @@
 
 ClapTrap::ClapTrap()
     :   _name("default name"),
-        _hit(100),
-        _energy(50),
-        _damage(20),
+        _hit(10),
+        _energy(10),
+        _damage(0),
         _game(true)
 {
     std::cout
@@ -18,9 +18,9 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const std::string& nameValue)
     :   _name(nameValue),
-        _hit(100),
-        _energy(50),
-        _damage(20),
+        _hit(10),
+        _energy(10),
+        _damage(0),
         _game(true)
 {
     std::cout
@@ -242,14 +242,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
 void    ClapTrap::printState(void) const
 {
     if (!_game)
-    {
-        std::cout
-            << "\nClapTrap "
-            << _name
-            << " is out of combat"
-            << std::endl;
         return ;
-    }
 
     std::cout
         << "\n        ClapTrap\n"

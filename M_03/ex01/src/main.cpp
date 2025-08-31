@@ -23,8 +23,10 @@ static int clearInputBuffer()
 int main(void)
 {
     {
-        const std::string a = "🐛";
-        const std::string b = "🐞";
+        std::cout << "\n---------------------GAME-------------------" << std::endl;
+
+        const std::string a = "🐞";
+        const std::string b = "🐛";
 
         ClapTrap A(a);
         ScavTrap B(b);
@@ -41,13 +43,13 @@ int main(void)
 
             if (!turn)
             {
-                attacker = &A;
-                target = &B;
+                attacker = &B;
+                target = &A;
             }
             else
             {
-                attacker = &B;
-                target = &A;
+                attacker = &A;
+                target = &B;
             }
 
             ft_print(attacker->getName(), " TURN");
@@ -80,7 +82,7 @@ int main(void)
             {
                 case 1:
                     attacker->attack(target->getName());
-                    target->takeDamage(attacker->getDamage());
+                    target->takeDamage(target->getDamage());
                     break ;
                 case 2:
                     attacker->beRepaired(target->getDamage());
@@ -103,11 +105,14 @@ int main(void)
                     ft_print("", "INVALID OPTION");
                     continue ;
             }
-            
+
             turn = !turn;
-            ft_print("", "ACTUAL STATE");
-            A.printState();
-            B.printState();
+            
+            if (A.getGame() && B.getGame())
+            {
+                A.printState();
+                B.printState();
+            }
         }
 
         if (!A.getHit() || !B.getHit())
@@ -121,13 +126,16 @@ int main(void)
         }
     }
     {   
+        std::cout << "\n---------------------TEST-------------------" << std::endl;
+
         ScavTrap* child = new ScavTrap("child");
         ClapTrap* claptrap_child = child; //pointer conversion, upcasting
-        std::cout << "-------------------------------" << std::endl;
-
+        
+        std::cout << "----------------------------------------" << std::endl;
         ClapTrap* father = new ClapTrap("father");
-        std::cout << "-------------------------------" << std::endl;
 
+        
+        std::cout << "\n-----------------------VIRTUAL ATTACK-----------------" << std::endl;
         /*virtual, call father method*/
         father->attack("🐛");          // ClapTrap::attack ✅ polymorphism 
 
@@ -137,6 +145,7 @@ int main(void)
         /*virtual, call child method*/
         claptrap_child->attack("🐛");  // ScavTrap::attack ✅ polymorphism
 
+        std::cout << "\n-----------------------NOT VIRTUAL PRINTSTATE-----------------" << std::endl;
         /*not virtual, call father method*/
         father->printState();          // ClapTrap::printState ❌ not polymorphism
 
@@ -146,6 +155,7 @@ int main(void)
         /*not virtual, call father method*/
         claptrap_child->printState();  // ClapTrap::printState ❌ not polymorphism
 
+        std::cout << "\n-----------------------VIRTUAL DESTRUCTOR-----------------" << std::endl;
         /*virtual, call father method*/
         delete father;                 // ClapTrap::~ClapTrap ✅ polymorphism
 

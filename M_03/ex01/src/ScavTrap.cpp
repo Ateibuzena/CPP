@@ -11,6 +11,9 @@ ScavTrap::ScavTrap()
         << this->_name
         << " ℹ️ : Default constructor"
         << std::endl;
+    _hit = 100;
+    _energy = 50;
+    _damage = 20;
 }
 
 ScavTrap::ScavTrap(const std::string& nameValue)
@@ -22,17 +25,20 @@ ScavTrap::ScavTrap(const std::string& nameValue)
         << this->_name
         << " ℹ️ : Parameterized constructor with name"
         << std::endl;
+    _hit = 100;
+    _energy = 50;
+    _damage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& object)
-    :   ClapTrap(object),
-        _gateKeeper(false)
+    :   ClapTrap(object)
 {
     std::cout
         << "\nScavTrap "
         << this->_name
         << " ℹ️ : Copy constructor"
         << std::endl;
+    *this = object;
 }
 
 ScavTrap&   ScavTrap::operator=(const ScavTrap& object)
@@ -115,25 +121,31 @@ void    ScavTrap::guardGate(void)
             << std::endl;
         return ;
     }
-    _gateKeeper = true;
-    std::cout
+    _gateKeeper = !_gateKeeper;
+
+    if (_gateKeeper)
+    {
+        std::cout
         << "\nScavTrap "
         << this->_name
         << " is now in Gate keeper mode"
         << std::endl;
+    }
+    else
+    {
+        std::cout
+        << "\nScavTrap "
+        << this->_name
+        << " isn't now in Gate keeper mode"
+        << std::endl;
+    }
+    
 }
 
 void    ScavTrap::printState(void) const
 {
     if (!this->_game)
-    {
-        std::cout
-            << "\nScavTrap "
-            << this->_name
-            << " is out of combat"
-            << std::endl;
         return ;
-    }
 
     std::cout
         << "\n        ScavTrap\n"
@@ -145,5 +157,7 @@ void    ScavTrap::printState(void) const
         << this->_energy
         << "\n        Attack damage: "
         << this->_damage
+        << "\n        Keeper gate: "
+        << this->_gateKeeper
         << std::endl;
 }
