@@ -82,7 +82,7 @@ int main(void)
             {
                 case 1:
                     attacker->attack(target->getName());
-                    target->takeDamage(target->getDamage());
+                    target->takeDamage(attacker->getDamage());
                     break ;
                 case 2:
                     attacker->beRepaired(target->getDamage());
