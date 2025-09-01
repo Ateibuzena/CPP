@@ -77,6 +77,20 @@ FragTrap::~FragTrap()
         << std::endl;
 }
 
+/*-------------------------------GETTERS-------------------------------*/
+
+bool        FragTrap::getGateKeeper(void) const
+{
+    return (_gateKeeper);
+}
+
+/*-------------------------------SETTERS-------------------------------*/
+
+void        FragTrap::setGateKeeper(bool gateKeeperValue)
+{
+    _gateKeeper = gateKeeperValue;
+}
+
 /*-------------------------------METHODS-------------------------------*/
 
 void    FragTrap::attack(const std::string& target)

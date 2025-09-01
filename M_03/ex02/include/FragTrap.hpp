@@ -16,6 +16,10 @@ class   FragTrap: public ClapTrap
 
                     ~FragTrap();
 
+        bool        getGateKeeper(void) const;
+                    
+        void        setGateKeeper(bool gateKeeperValue);
+        
         void        attack(const std::string& target);
         void        guardGate(void);
         void        highFivesGuys(void);
