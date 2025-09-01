@@ -76,6 +76,20 @@ ScavTrap::~ScavTrap()
         << std::endl;
 }
 
+/*-------------------------------GETTERS-------------------------------*/
+
+bool        ScavTrap::getGateKeeper(void) const
+{
+    return (_gateKeeper);
+}
+
+/*-------------------------------SETTERS-------------------------------*/
+
+void        ScavTrap::setGateKeeper(bool gateKeeperValue)
+{
+    _gateKeeper = gateKeeperValue;
+}
+
 /*-------------------------------METHODS-------------------------------*/
 
 void    ScavTrap::attack(const std::string& target)
