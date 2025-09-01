@@ -177,6 +177,6 @@ void    ScavTrap::printState(void) const
         << "\n        Attack damage: "
         << getDamage()
         << "\n        Keeper gate: "
-        << this->_gateKeeper
+        << _gateKeeper
         << std::endl;
 }
