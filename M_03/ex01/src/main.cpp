@@ -128,11 +128,11 @@ int main(void)
     {   
         std::cout << "\n---------------------TEST-------------------" << std::endl;
 
-        ScavTrap* child = new ScavTrap("child");
+        ScavTrap* child = new ScavTrap("scav_child");
         ClapTrap* claptrap_child = child; //pointer conversion, upcasting
-        
+
         std::cout << "----------------------------------------" << std::endl;
-        ClapTrap* father = new ClapTrap("father");
+        ClapTrap* father = new ClapTrap("clap_father");
 
         
         std::cout << "\n-----------------------VIRTUAL ATTACK-----------------" << std::endl;
@@ -149,8 +149,8 @@ int main(void)
         /*not virtual, call father method*/
         father->printState();          // ClapTrap::printState ❌ not polymorphism
 
-        /*not virtual, call father method*/
-        child->printState();           // ClapTrap::printState ❌ not polymorphism
+        /*not virtual, call own method*/
+        child->printState();           // ScavTrap::printState ❌ not polymorphism
 
         /*not virtual, call father method*/
         claptrap_child->printState();  // ClapTrap::printState ❌ not polymorphism
