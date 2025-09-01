@@ -8,12 +8,12 @@ FragTrap::FragTrap()
 {
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " ℹ️ : Default constructor"
         << std::endl;
-    _hit = 100;    // sobreescribes valores heredados
-    _energy = 100;
-    _damage = 30;
+    setHit(100);
+    setEnergy(100);
+    setDamage(30);
 }
 
 FragTrap::FragTrap(const std::string& nameValue)
@@ -22,12 +22,12 @@ FragTrap::FragTrap(const std::string& nameValue)
 {
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " ℹ️ : Parameterized constructor with name"
         << std::endl;
-    _hit = 100;    // sobreescribes valores heredados
-    _energy = 100;
-    _damage = 30;
+    setHit(100);    // sobreescribes valores heredados
+    setEnergy(100);
+    setDamage(30);
 }
 
 FragTrap::FragTrap(const FragTrap& object)
@@ -36,7 +36,7 @@ FragTrap::FragTrap(const FragTrap& object)
 {
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " ℹ️ : Copy constructor"
         << std::endl;
     *this = object;
@@ -46,18 +46,22 @@ FragTrap&   FragTrap::operator=(const FragTrap& object)
 {
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " ℹ️ : Operator assignement"
         << std::endl;
     
     if (this != &object)
     {
-        this->_name = object._name;
-        this->_hit = object._hit;
-        this->_energy = object._energy;
-        this->_damage = object._damage;
+        /*setName(object.getName());
+        setHit(object.getHit());
+        setEnergy(object.getEnergy());
+        setDamage(object.getDamage());
+        setGame(object.getGame());*/
+
+        /*ClapTrap::operator=(object);*/
+        ClapTrap::operator=(static_cast<const ClapTrap&>(object));
+        
         this->_gateKeeper = object._gateKeeper;
-        this->_game = object._game;
     }
     return (*this);
 }
@@ -68,7 +72,7 @@ FragTrap::~FragTrap()
 {
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " ℹ️ : Destructor"
         << std::endl;
 }
@@ -77,36 +81,37 @@ FragTrap::~FragTrap()
 
 void    FragTrap::attack(const std::string& target)
 {
-    if (!this->_game)
+    if (!getGame())
     {
         std::cout
             << "\nFragTrap "
-            << this->_name
+            << getName()
             << " is out of combat"
             << std::endl;
         return ;
     }
-    if (!this->_energy)
+    if (!getEnergy())
     {
         std::cout
             << "\nFragTrap "
-            << this->_name
+            << getName()
             << " can't attack"
             << std::endl;
-        this->_game = false;
+        setGame(false);
         return ;
     }
-    this->_energy -= 1;
+
+    setEnergy(getEnergy() - 1);
 
     std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " attacks "
         << target
         << " causing "
-        << this->_damage
+        << getDamage()
         << " & now has "
-        << this->_energy
+        << getEnergy()
         << " points of energy"
         << std::endl;
 }
@@ -115,18 +120,18 @@ void FragTrap::highFivesGuys(void)
 {
     std::cout
         << "\nFragTrap "
-        << _name
+        << getName()
         << " requests a positive high five 🙌"
         << std::endl;
 }
 
 void    FragTrap::guardGate(void)
 {
-    if (!this->_game)
+    if (!getGame())
     {
         std::cout
             << "\nFragTrap "
-            << this->_name
+            << getName()
             << " is out of combat"
             << std::endl;
         return ;
@@ -137,7 +142,7 @@ void    FragTrap::guardGate(void)
     {
         std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " is now in Gate keeper mode"
         << std::endl;
     }
@@ -145,7 +150,7 @@ void    FragTrap::guardGate(void)
     {
         std::cout
         << "\nFragTrap "
-        << this->_name
+        << getName()
         << " isn't now in Gate keeper mode"
         << std::endl;
     }
@@ -154,19 +159,19 @@ void    FragTrap::guardGate(void)
 
 void    FragTrap::printState(void) const
 {
-    if (!this->_game)
+    if (!getGame())
         return ;
 
     std::cout
         << "\n        FragTrap\n"
         << "        Name: "
-        <<  this->_name
+        <<  getName()
         << "\n        Hit points: "
-        << this->_hit
+        << getHit()
         << "\n        Energy points: "
-        << this->_energy
+        << getEnergy()
         << "\n        Attack damage: "
-        << this->_damage
+        << getDamage()
         << "\n        Keeper gate: "
         << this->_gateKeeper
         << std::endl;

@@ -170,11 +170,11 @@ int main(void)
         /*not virtual, call father method*/
         father->printState();          // ClapTrap::printState ❌ not polymorphism
 
-        /*not virtual, call father method*/
-        scav_child->printState();           // ClapTrap::printState ❌ not polymorphism
+        /*not virtual, call own method*/
+        scav_child->printState();           // ScavTrap::printState ❌ not polymorphism
 
-        /*not virtual, call father method*/
-        frag_child->printState();           // ClapTrap::printState ❌ not polymorphism
+        /*not virtual, call own method*/
+        frag_child->printState();           // FragTrap::printState ❌ not polymorphism
 
         /*not virtual, call father method*/
         claptrap_child1->printState();  // ClapTrap::printState ❌ not polymorphism
