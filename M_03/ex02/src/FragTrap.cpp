@@ -32,7 +32,7 @@ FragTrap::FragTrap(const std::string& nameValue)
 
 FragTrap::FragTrap(const FragTrap& object)
     :   ClapTrap(object),
-        _gateKeeper(false)
+        _gateKeeper(object._gateKeeper)
 {
     std::cout
         << "\nFragTrap "

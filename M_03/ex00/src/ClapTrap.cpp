@@ -35,7 +35,7 @@ ClapTrap::ClapTrap(const ClapTrap& object)
         _hit(object._hit),
         _energy(object._energy),
         _damage(object._damage),
-        _game(true)
+        _game(object._game)
 {
     /*std::cout
         << "\n"
