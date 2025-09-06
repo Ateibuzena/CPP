@@ -36,7 +36,6 @@ FragTrap::FragTrap(const FragTrap& object)
         << getName()
         << " ℹ️ : Copy constructor"
         << std::endl;
-    *this = object;
 }
 
 FragTrap&   FragTrap::operator=(const FragTrap& object)
