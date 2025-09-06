@@ -6,7 +6,6 @@
 class   FragTrap: public ClapTrap
 {
     private:
-        bool        _gateKeeper;
     
     public:
                     FragTrap();
@@ -15,13 +14,8 @@ class   FragTrap: public ClapTrap
         FragTrap&   operator=(const FragTrap& object);
 
                     ~FragTrap();
-
-        bool        getGateKeeper(void) const;
-                    
-        void        setGateKeeper(bool gateKeeperValue);
         
         void        attack(const std::string& target);
-        void        guardGate(void);
         void        highFivesGuys(void);
 
         void        printState(void) const;
