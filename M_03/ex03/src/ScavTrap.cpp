@@ -11,7 +11,7 @@ ScavTrap::ScavTrap()
         << getName()
         << " ℹ️ : Default constructor"
         << std::endl;
-    setHit(200);
+    setHit(100);
     setEnergy(50);
     setDamage(20);
 }
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(const std::string& nameValue)
         << getName()
         << " ℹ️ : Parameterized constructor with name"
         << std::endl;
-    setHit(200);
+    setHit(100);
     setEnergy(50);
     setDamage(20);
 }

@@ -1,4 +1,4 @@
-NAME = Repetitive
+NAME = Diamond
 
 CC = c++
 

@@ -6,7 +6,6 @@
 class   FragTrap: virtual public ClapTrap
 {
     private:
-        bool        _gateKeeper;
     
     public:
                     FragTrap();
@@ -16,12 +15,7 @@ class   FragTrap: virtual public ClapTrap
 
                     ~FragTrap();
 
-        bool        getGateKeeper(void) const;
-                    
-        void        setGateKeeper(bool gateKeeperValue);
-
         void        attack(const std::string& target);
-        void        guardGate(void);
         void        highFivesGuys(void);
 
         void        printState(void) const;

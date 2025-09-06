@@ -3,8 +3,7 @@
 /*-------------------------------CONSTRUCTORS-------------------------------*/
 
 FragTrap::FragTrap()
-    :   ClapTrap(),
-        _gateKeeper(false)
+    :   ClapTrap()
 {
     std::cout
         << "\nFragTrap "
@@ -17,8 +16,7 @@ FragTrap::FragTrap()
 }
 
 FragTrap::FragTrap(const std::string& nameValue)
-    :   ClapTrap(nameValue),
-        _gateKeeper(false)
+    :   ClapTrap(nameValue)
 {
     std::cout
         << "\nFragTrap "
@@ -31,15 +29,13 @@ FragTrap::FragTrap(const std::string& nameValue)
 }
 
 FragTrap::FragTrap(const FragTrap& object)
-    :   ClapTrap(object),
-        _gateKeeper(object._gateKeeper)
+    :   ClapTrap(object)
 {
     std::cout
         << "\nFragTrap "
         << getName()
         << " ℹ️ : Copy constructor"
         << std::endl;
-    *this = object;
 }
 
 FragTrap&   FragTrap::operator=(const FragTrap& object)
@@ -60,8 +56,6 @@ FragTrap&   FragTrap::operator=(const FragTrap& object)
 
         /*ClapTrap::operator=(object);*/
         ClapTrap::operator=(static_cast<const ClapTrap&>(object));
-        
-        this->_gateKeeper = object._gateKeeper;
     }
     return (*this);
 }
@@ -75,20 +69,6 @@ FragTrap::~FragTrap()
         << getName()
         << " ℹ️ : Destructor"
         << std::endl;
-}
-
-/*-------------------------------GETTERS-------------------------------*/
-
-bool        FragTrap::getGateKeeper(void) const
-{
-    return (_gateKeeper);
-}
-
-/*-------------------------------SETTERS-------------------------------*/
-
-void        FragTrap::setGateKeeper(bool gateKeeperValue)
-{
-    _gateKeeper = gateKeeperValue;
 }
 
 /*-------------------------------METHODS-------------------------------*/
@@ -139,38 +119,6 @@ void FragTrap::highFivesGuys(void)
         << std::endl;
 }
 
-void    FragTrap::guardGate(void)
-{
-    if (!getGame())
-    {
-        std::cout
-            << "\nFragTrap "
-            << getName()
-            << " is out of combat"
-            << std::endl;
-        return ;
-    }
-    _gateKeeper = !_gateKeeper;
-
-    if (_gateKeeper)
-    {
-        std::cout
-        << "\nFragTrap "
-        << getName()
-        << " is now in Gate keeper mode"
-        << std::endl;
-    }
-    else
-    {
-        std::cout
-        << "\nFragTrap "
-        << getName()
-        << " isn't now in Gate keeper mode"
-        << std::endl;
-    }
-    
-}
-
 void    FragTrap::printState(void) const
 {
     if (!getGame())
@@ -186,7 +134,5 @@ void    FragTrap::printState(void) const
         << getEnergy()
         << "\n        Attack damage: "
         << getDamage()
-        << "\n        Keeper gate: "
-        << _gateKeeper
         << std::endl;
 }
