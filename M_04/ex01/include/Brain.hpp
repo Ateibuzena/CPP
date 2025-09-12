@@ -2,7 +2,7 @@
 # define BRAIN_HPP
 
 # include <iostream>
-#include <algorithm>
+# include <algorithm>
 
 class   Brain
 {
