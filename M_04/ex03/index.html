@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mi Juego</title>
+</head>
+<body>
+<pre id="map" style="font-size:16px; line-height:1em;"></pre>
+<script>
+async function refreshMap() {
+    const res = await fetch('maps/world_01.txt');
+    const text = await res.text();
+    document.getElementById('map').textContent = text;
+    setTimeout(refreshMap, 500); // refresca cada 0.5 segundos
+}
+refreshMap();
+</script>
+</body>
+</html>
