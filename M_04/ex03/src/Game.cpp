@@ -223,101 +223,136 @@ char Game::showMenu(void) const
 void Game::loopGame(void)
 {
     int turn = 0;
+    int players_materias = 0;
+    int enemies_materias = 0;
     std::string worldName = "world_01";
 
     // Posiciones iniciales
     _map.setWorld(worldName);
-    for (int i = 0; i < PLAYERS; i++)
+    int i = 0;
+    while (i < PLAYERS)
+    {
         _players[i]->setPosition(0, i);
-    for (int j = 0; j < ENEMIES; j++)
+        i++;
+    }
+
+    int j = 0;
+    while (j < ENEMIES)
+    {
         _enemies[j]->setPosition(WIDTH - 1, HEIGHT - 1 - j);
-    saveWorld("/sgoinfre/students/azubieta/CPP/M_04/ex03/maps/world_01.txt");
+        j++;
+    }
+
+    saveWorld("./maps/world_01.txt");
 
     _game = true;
     while (_game)
     {
-        std::cout
-            << "\n===== TURNO "
-            << turn
-            << " =====\n"
-            << std::endl;
+        std::cout << "\n===== TURNO " << turn << " =====\n" << std::endl;
 
-        // Turno de cada jugador
-        int i = 0;
+        // --- Turno de jugadores ---
+        i = 0;
         while (i < PLAYERS)
         {
-            std::cout
-                << "\n==== PLAYER "
-                << _players[i]->getName()
-                << " ====\n"
-                << std::endl;
+            std::cout << "\n==== PLAYER " << _players[i]->getName() << " ====\n" << std::endl;
 
             char input = showMenu();
             if (input == 'q')
+            {
                 _game = false;
+                break;
+            }
 
             _players[i]->move(input);
 
-            // después de mover, revisar si hay materia en esa casilla
             const int* pos = _players[i]->getPosition();
             if (pos[0] < 0 || pos[0] >= WIDTH || pos[1] < 0 || pos[1] >= HEIGHT)
             {
                 std::cout << "\n---------------GAME OVER-----------------\n";
                 _game = false;
-                break ;
+                break;
             }
 
+            // Materia en el mapa
             AMateria* materia = _map.getMateria(pos[0], pos[1]);
             if (materia)
             {
-                _players[i]->equip(materia);
-                _map.setMateria(NULL, pos[0], pos[1]);
+                if (players_materias < 4)
+                {
+                    players_materias++;
+                    _players[i]->equip(materia);
+                    _map.setMateria(NULL, pos[0], pos[1]);
+                }
+                else
+                {
+                    int last_slot = 3;
+                    AMateria* temp = _players[i]->getMateria(last_slot);
+                    if (temp)
+                    {
+                        _players[i]->unequip(last_slot);
+                        _map.setMateria(temp, pos[0], pos[1]);
+                        _players[i]->equip(materia);
+                    }
+                }
             }
-            saveWorld("/sgoinfre/students/azubieta/CPP/M_04/ex03/maps/world_01.txt");
-
+            saveWorld("./maps/world_01.txt");
             i++;
         }
 
-        // Turno de enemigos (ejemplo: se mueven a la izquierda)
-        int j = 0;
+        if (!_game) break;
+
+        // --- Turno de enemigos ---
+        j = 0;
         while (j < ENEMIES)
         {
-            std::cout
-                << "\n==== ENEMY "
-                << _players[i]->getName()
-                << " ====\n"
-                << std::endl;
+            std::cout << "\n==== ENEMY " << _enemies[j]->getName() << " ====\n" << std::endl;
 
             char input = showMenu();
             if (input == 'q')
+            {
                 _game = false;
+                break;
+            }
 
             _enemies[j]->move(input);
 
-            // después de mover, revisar si hay materia en esa casilla
             const int* pos = _enemies[j]->getPosition();
             if (pos[0] < 0 || pos[0] >= WIDTH || pos[1] < 0 || pos[1] >= HEIGHT)
             {
                 std::cout << "\n---------------GAME OVER-----------------\n";
                 _game = false;
-                break ;
+                break;
             }
 
             AMateria* materia = _map.getMateria(pos[0], pos[1]);
             if (materia)
             {
-                _enemies[j]->equip(materia);
-                _map.setMateria(NULL, pos[0], pos[1]);
+                if (enemies_materias < 4)
+                {
+                    enemies_materias++;
+                    _enemies[j]->equip(materia);
+                    _map.setMateria(NULL, pos[0], pos[1]);
+                }
+                else
+                {
+                    int last_slot = 3;
+                    AMateria* temp = _enemies[j]->getMateria(last_slot);
+                    if (temp)
+                    {
+                        _enemies[j]->unequip(last_slot);
+                        _map.setMateria(temp, pos[0], pos[1]);
+                        _enemies[j]->equip(materia);
+                    }
+                }
             }
-            saveWorld("/sgoinfre/students/azubieta/CPP/M_04/ex03/maps/world_01.txt");
-
+            saveWorld("./maps/world_01.txt");
             j++;
         }
 
-        // Guardar estado
-        saveWorld("/sgoinfre/students/azubieta/CPP/M_04/ex03/maps/world_01.txt");
+        // Guardar estado final del turno
+        saveWorld("./maps/world_01.txt");
 
-        // Condición de salida (ejemplo: max turnos)
+        // Condición de salida por turnos
         turn++;
         if (turn == 20)
         {

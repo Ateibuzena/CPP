@@ -11,8 +11,8 @@
 # include "Character.hpp"
 # include "Map.hpp"
 
-# define PLAYERS 10
-# define ENEMIES 10
+# define PLAYERS 1
+# define ENEMIES 1
 
 class   Game
 {

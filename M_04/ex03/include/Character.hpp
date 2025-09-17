@@ -21,9 +21,11 @@ class   Character: public ICharacter
                                     ~Character();
 
         const std::string&          getName(void) const;
+        AMateria*                   getMateria(int idx) const;
         const int*                  getPosition(void) const;
 
         void                        setName(const std::string& nameValue);
+        void                        setMateria(int idx, AMateria* materia);
         void                        setPosition(int x, int y);
 
         void                        showInventary(void) const;

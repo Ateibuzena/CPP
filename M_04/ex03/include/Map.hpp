@@ -6,9 +6,9 @@
 # include "Ice.hpp"
 # include "Cure.hpp"
 
-# define WIDTH 30
-# define HEIGHT 30
-# define MATERIAS 20
+# define WIDTH 10
+# define HEIGHT 10
+# define MATERIAS 6
 
 class   Map
 {

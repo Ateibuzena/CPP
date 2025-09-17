@@ -89,6 +89,13 @@ const std::string&  Character::getName(void) const
     return (_name);
 }
 
+AMateria* Character::getMateria(int idx) const
+{
+    if (idx >= 0 && idx < 4)
+        return (_inventary[idx]);
+    return (NULL);
+}
+
 const int* Character::getPosition(void) const
 {
     return (_position);
@@ -99,6 +106,12 @@ const int* Character::getPosition(void) const
 void    Character::setName(const std::string& nameValue)
 {
     _name = nameValue;
+}
+
+void Character::setMateria(int idx, AMateria* materia)
+{
+    if (idx >= 0 && idx < 4)
+        _inventary[idx] = materia;
 }
 
 void    Character::setPosition(int x, int y)

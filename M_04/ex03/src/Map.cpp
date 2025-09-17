@@ -138,11 +138,7 @@ void Map::setWorld(const std::string& worldValue)
 void    Map::setMateria(AMateria* materiaValue, int x, int y)
 {
     if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-    {
-        if (materiaValue && _grid[y][x])
-            delete _grid[y][x];
         _grid[y][x] = materiaValue;
-    }
 }
 
 void Map::showMap(Character* players[], int playersSize, Character* enemies[], int enemiesSize)
