@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /*-------------------------------CONSTRUCTORS-------------------------------*/
 
@@ -14,9 +15,9 @@ Bureaucrat::Bureaucrat(const std::string& nameValue, int gradeValue)
         _grade(gradeValue)
 {
     if (_grade < 1)
-        throw GradeTooHighException();
+        throw GradeTooHighException(_name, _grade);
     if (_grade > 150)
-        throw GradeTooLowException();
+        throw GradeTooLowException(_name, _grade);
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& object)
@@ -56,43 +57,68 @@ int Bureaucrat::getGrade(void) const
     return (_grade);
 }
 
+/*-------------------------------SETTERS-------------------------------*/
+
 /*void    Bureaucrat::setName(const std::string& nameValue)
 {
     _name = nameValue;
 }*/ //name is immutable
 
-/*-------------------------------SETTERS-------------------------------*/
-
-void    Bureaucrat::setGrade(int gradeValue)
+/*void    Bureaucrat::setGrade(int gradeValue)
 {
-    if (_grade < 1)
-
-    if (_grade > 150)
-
-    _grade = gradeValue;
-}
+    
+}*/ //can't be set by the face
 
 /*-------------------------------METHODS-------------------------------*/
 
 void    Bureaucrat::incrementGrade(void)
 {
     if (_grade - 1 < 1)
-        throw GradeTooHighException();
+        throw GradeTooHighException(_name, _grade);
     _grade--;
 }
 
 void    Bureaucrat::decrementGrade(void)
 {
     if (_grade + 1 > 150)
-        throw GradeTooLowException();
+        throw GradeTooLowException(_name, _grade);
     _grade++;
+}
+
+void    Bureaucrat::signForm(Form& object)
+{
+    try
+    {
+        object.beSigned(*this);
+        std::cout
+                << _name
+                << " signed "
+                << object.getName()
+                << std::endl;
+    }
+    catch (const std::exception& error)
+    {
+        std::cout
+                << _name
+                << " couldn't sign "
+                << object.getName()
+                << " because:\n"
+                << error.what()
+                << std::endl;
+    }
 }
 
 /*-------------------------------CLASSES-------------------------------*/
 
-Bureaucrat::GradeTooHighException::GradeTooHighException()
+Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string& name, int grade)
 {
+    std::ostringstream  oss;
 
+    oss << "Bureaucrat: " << name
+        << " grade " << grade
+        << " is too high (cannot be less than 1)";
+
+    _msg = oss.str();
 }
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
@@ -102,12 +128,18 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-    return ("Grade is too high");
+    return (_msg.c_str());
 }
 
-Bureaucrat::GradeTooLowException::GradeTooLowException()
+Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string& name, int grade)
 {
+    std::ostringstream  oss;
 
+    oss << "Bureaucrat: " << name
+        << " grade " << grade
+        << " is too low (cannot be greater than 150)";
+
+    _msg = oss.str();
 }
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
@@ -117,5 +149,5 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-    return ("Grade is too low");
+    return (_msg.c_str());
 }

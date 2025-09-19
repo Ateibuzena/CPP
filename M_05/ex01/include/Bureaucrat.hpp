@@ -3,6 +3,9 @@
 
 # include <iostream>
 # include <stdexcept>
+# include <sstream>
+
+class Form;
 
 class   Bureaucrat
 {
@@ -22,23 +25,29 @@ class   Bureaucrat
         int                 getGrade(void) const;
         
         /*void                setName(const std::string& nameValue);*/ //name is immutable
-        void                setGrade(int gradeValue);
+        /*void                setGrade(int gradeValue);*/ //can't be set by the face
 
         void                incrementGrade(void);
         void                decrementGrade(void);
 
+        void                signForm(Form& object);
+
         class GradeTooHighException : public std::exception
         {
+            private:
+                std::string _msg;
             public:
-                            GradeTooHighException();
+                            GradeTooHighException(const std::string& name, int grade);
                             ~GradeTooHighException() throw();
                 const char* what(void) const throw();
         };
 
         class GradeTooLowException : public std::exception
         {
+            private:
+                std::string _msg;
             public:
-                            GradeTooLowException();
+                            GradeTooLowException(const std::string& name, int grade);
                             ~GradeTooLowException() throw();
                 const char* what(void) const throw();
         };
