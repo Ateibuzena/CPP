@@ -1,4 +1,4 @@
-NAME = Forms
+NAME = coffee-making
 
 CC = c++
 

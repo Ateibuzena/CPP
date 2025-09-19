@@ -2,6 +2,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
@@ -19,85 +20,94 @@ int main()
             << arthur
             << "\n\n";
 
-    // ---------------- FORMS ----------------
-    std::cout << "\n--- Forms creations ---\n";
-    ShrubberyCreationForm malagaTrees("Campus42Malaga");
-    RobotomyRequestForm intraUpdate("Intra42Malaga");
-    PresidentialPardonForm alvaroPardon("Álvaro Valiente");
+    // ---------------- INTERN ----------------
+    std::cout << "\n--- Intern creates forms ---\n";
 
-    std::cout
-            << malagaTrees
-            << "\n\n"
-            << intraUpdate
-            << "\n\n"
-            << alvaroPardon
-            << "\n\n";
+    Intern intern;
+
+    AForm* malagaTrees = intern.makeForm("shrubbery creation", "Campus42Malaga");
+    AForm* intraUpdate = intern.makeForm("robotomy request", "Intra42Malaga");
+    AForm* alvaroPardon = intern.makeForm("presidential pardon", "Álvaro Valiente");
+    AForm* unknownForm = intern.makeForm("unknown form", "Nobody"); // Prueba error
+
+    // ---------------- PRINT FORMS ----------------
+    std::cout << "\n--- Forms created ---\n";
+    if (malagaTrees)
+        std::cout
+                << *malagaTrees
+                << "\n\n";
+    if (intraUpdate)
+        std::cout
+                << *intraUpdate
+                << "\n\n";
+    if (alvaroPardon)
+        std::cout
+                << *alvaroPardon
+                << "\n\n";
+    if (unknownForm)
+        std::cout
+                << *unknownForm
+                << "\n\n";
 
     // ---------------- SIGNING ----------------
     std::cout << "\n--- Signing attempts ---\n";
     
-    ford.signForm(malagaTrees);
-    ford.signForm(intraUpdate);
-    ford.signForm(alvaroPardon);
+    Bureaucrat bureaucrats[] = {zaphod, ford, arthur};
+    AForm* forms[] = {malagaTrees, intraUpdate, alvaroPardon, unknownForm};
 
-    std::cout
-            << malagaTrees
-            << "\n\n"
-            << intraUpdate
-            << "\n\n"
-            << alvaroPardon
-            << "\n\n";
+    int i = 0;
+    while (i < 3)
+    {
+        Bureaucrat &b = bureaucrats[i];
 
-    arthur.signForm(malagaTrees);
-    arthur.signForm(intraUpdate);
-    arthur.signForm(alvaroPardon);
+        std::cout << "\nSigning forms with " << b.getName() << ":\n";
 
-    std::cout
-            << malagaTrees
-            << "\n\n"
-            << intraUpdate
-            << "\n\n"
-            << alvaroPardon
-            << "\n\n";
-
-    zaphod.signForm(malagaTrees);
-    zaphod.signForm(intraUpdate);
-    zaphod.signForm(alvaroPardon);
-
-    std::cout
-            << malagaTrees
-            << "\n\n"
-            << intraUpdate
-            << "\n\n"
-            << alvaroPardon
-            << "\n\n";
+        int j = 0;
+        while (j < 4)
+        {
+            if (forms[j]) 
+            {
+                std::cout << "\nForm: " << forms[j]->getName() << "\n";
+                b.signForm(*forms[j]);
+            }
+            j++;
+        }
+        i++;
+    }
 
     // ---------------- EXECUTIONS ----------------
     std::cout << "\n--- Executions ---\n";
-
-    Bureaucrat bureaucrats[] = {zaphod, ford, arthur};
-    AForm* forms[] = {&malagaTrees, &intraUpdate, &alvaroPardon};
-
     for (int i = 0; i < 3; ++i)
     {
         Bureaucrat &b = bureaucrats[i];
-        std::cout << "\nExecuting forms with " << b.getName() << ":\n";
+
+        std::cout
+                << "\nExecuting forms with "
+                << b.getName()
+                << ":\n";
 
         for (int j = 0; j < 3; ++j)
         {
-            AForm *f = forms[j];
-            try
+            if (forms[j])
             {
-                f->execute(b);
-            }
-            catch (const std::exception &e)
-            {
-                std::cerr << e.what() << std::endl;
+                try
+                {
+                    forms[j]->execute(b);
+                }
+                catch (const std::exception &e)
+                {
+                    std::cerr << e.what() << std::endl;
+                }
             }
         }
     }
 
-    std::cout << "\n--- SIMULATION END ---\n";
+    // ---------------- CLEANUP ----------------
+    delete malagaTrees;
+    delete intraUpdate;
+    delete alvaroPardon;
+    delete unknownForm;
 
-    return (0);
+    std::cout << "\n--- SIMULATION END ---\n";
+    return 0;
 }
