@@ -60,14 +60,20 @@ int main()
     {
         Bureaucrat &b = bureaucrats[i];
 
-        std::cout << "\nSigning forms with " << b.getName() << ":\n";
+        std::cout
+                << "\nSigning forms with "
+                << b.getName()
+                << "\n";
 
         int j = 0;
         while (j < 4)
         {
             if (forms[j]) 
             {
-                std::cout << "\nForm: " << forms[j]->getName() << "\n";
+                std::cout
+                        << "\nForm: "
+                        << forms[j]->getName()
+                        << "\n";
                 b.signForm(*forms[j]);
             }
             j++;
@@ -84,7 +90,7 @@ int main()
         std::cout
                 << "\nExecuting forms with "
                 << b.getName()
-                << ":\n";
+                << "\n";
 
         for (int j = 0; j < 3; ++j)
         {
