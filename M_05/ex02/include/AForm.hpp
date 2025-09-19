@@ -20,7 +20,7 @@ class   AForm
                             AForm(const AForm& object);
         AForm&               operator=(const AForm& object); //anybody must use it
 
-                            ~AForm();
+        virtual             ~AForm();
 
         const std::string&  getName(void) const;
         bool                getSigned(void) const;
