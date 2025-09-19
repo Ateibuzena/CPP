@@ -32,7 +32,7 @@ class   Form
         /*void                setExecuteGrade(const int);*/ //executegrade is immutable
         /*void                setSigned(bool signedValue);*/ //can't be set by the face
 
-        void                beSigned(const Bureaucrat &object);
+        void                beSigned(const Bureaucrat& object);
 
         class GradeTooHighException : public std::exception
         {

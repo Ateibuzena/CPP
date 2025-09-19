@@ -98,7 +98,7 @@ int   Form::getExecuteGrade(void) const
 
 /*-------------------------------METHODS-------------------------------*/
 
-void    Form::beSigned(const Bureaucrat &object)
+void    Form::beSigned(const Bureaucrat& object)
 {
     if (object.getGrade() > _writeGrade)
         throw GradeTooLowException(_name, _writeGrade);
