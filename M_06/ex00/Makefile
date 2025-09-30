@@ -1,4 +1,4 @@
-NAME = scalar
+NAME = Convert
 
 CC = c++
 

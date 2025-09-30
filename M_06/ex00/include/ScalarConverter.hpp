@@ -11,12 +11,12 @@
 class   ScalarConverter
 {
     private:
-                            ScalarConverter() = delete;
+                            ScalarConverter();
                             //ScalarConverter() = delete;  //parametrize constructor
-                            ScalarConverter(const ScalarConverter& object) = delete;
-        ScalarConverter&    operator=(const ScalarConverter& object) = delete;
+                            ScalarConverter(const ScalarConverter& object);
+        ScalarConverter&    operator=(const ScalarConverter& object);
 
-                            ~ScalarConverter() = delete;
+                            ~ScalarConverter();
 
         /**
          * Checks if the given literal is a pseudo-literal.
