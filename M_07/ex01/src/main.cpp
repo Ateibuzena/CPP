@@ -6,7 +6,7 @@
 
 static double   ft_halfInt(int x)
 {
-    return x / 2.0;
+    return (x / 2.0);
 };
 
 int main(void)
@@ -74,7 +74,7 @@ int main(void)
             std::cout << std::endl;
         }
 
-        std::cout << "\n=== END OF LAB ===" << std::endl;
+        std::cout << "\n=== END OF LAB ===\n" << std::endl;
     }
     
     {
@@ -111,7 +111,37 @@ int main(void)
 
     {
         {
-            std::cout << "=== MY TESTING ITER FUNCTION ===\n\n";
+            // Test 1: integers
+            const int             arrInt[] = {1, 2, 3, 4, 5};
+            const size_t    lenInt = 5;
+
+            std::cout << "Const Integers (template print): ";
+            iter(arrInt, lenInt, printTemplate<int>);  // using template
+            std::cout << std::endl;
+        }
+        {
+            // Test 2: characters
+            const char arrChar[] = {'a', 'b', 'c', 'd'};
+            const size_t lenChar = 4;
+
+            std::cout << "Const Characters (template print): ";
+            iter(arrChar, lenChar, printTemplate<char>); // template function
+            std::cout << std::endl;
+        }
+        {
+            // Test 3: strings
+            const std::string arrStr[] = {"Hello", "World", "42"};
+            const size_t lenStr = 3;
+
+            std::cout << "Const Strings (template print): ";
+            iter(arrStr, lenStr, printTemplate<std::string>); // template function
+            std::cout << std::endl;
+        }
+    }
+        std::cout << "\n=== END OF TESTING ITER ===\n" << std::endl;
+    {
+        {
+            std::cout << "=== MY TESTING TEMPLATE FOR ARRAYS ===\n\n";
 
             {
                 // ---------------- Simple int array ----------------
@@ -158,6 +188,8 @@ int main(void)
                 iter(arrStr, lenStr, printTemplate<std::string>);
                 std::cout << std::endl;
             }
+
+            std::cout << "\n=== END OF TESTING MY TEMPLATE FOR ARRAYS ===\n" << std::endl;
         }
 
         {
@@ -192,6 +224,8 @@ int main(void)
             std::cout << "Array of Vectors: ";
             iter(arr, len, printTemplate<Vector>);
             std::cout << std::endl;
+
+            std::cout << "\n=== END OF TESTING VECTOR CLASS AND ITER ===\n" << std::endl;
         }
     }
     return (0);

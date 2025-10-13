@@ -12,12 +12,24 @@
  * - length: number of elements
  * - func: function to apply to each element
  */
+
+/* ------------------ non-const iter (elements may be modified) ------------------ */
 template <typename T, typename F>
 void iter(T* array, const size_t length, F func)
 {
     std::cout << "[ ";
     for (size_t i = 0; i < length; ++i)
         func(array[i]);
+    std::cout << "]" << std::endl;
+}
+
+/* ------------------ const iter (read-only elements) ------------------ */
+template <typename T, typename F>
+void iter(const T* array, const size_t length, F func)
+{
+    std::cout << "[ ";
+    for (size_t i = 0; i < length; ++i)
+        func(array[i]);   // func should be void func(const T&) or void func(T) that can accept const T
     std::cout << "]" << std::endl;
 }
 
