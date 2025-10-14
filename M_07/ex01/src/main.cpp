@@ -20,7 +20,7 @@ int main(void)
 
             // 1️⃣ Basic iter with T& (modification possible)
             std::cout << "1.a) Basic iter with references (T&): ";
-            iterExample(intArray, len, ft_print<int>);
+            iterExample<int, void(*)(const int&)>(intArray, len, printInt);
             std::cout << std::endl;
 
             std::cout << "1.b) Basic iter with references (T&) and modification: ";

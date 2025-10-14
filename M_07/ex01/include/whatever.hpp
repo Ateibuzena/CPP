@@ -28,10 +28,10 @@ void iterExample(T *array, const size_t length, F f)
 /* ************************************************************************** */
 
 /* Specific function for int */
-/*void printInt(const int& x)
+void printInt(const int& x)
 {
     std::cout << x << " ";
-}*/
+}
 
 /* Specific function for arrayInt */
 /*void printArrayInt(const int& x, const size_t length)
@@ -86,11 +86,11 @@ void iterByValue(T *array, const size_t length, F func)
 }
 
 /* Template function compatible with iterByValue */
-template <typename T>
+/*template <typename T>
 void ft_printCopy(T x)
 {
     std::cout << x << " ";
-}
+}*/
 
 /* ************************************************************************** */
 /*                  ITER THAT RETURNS THE RESULT OF THE FUNCTION               */

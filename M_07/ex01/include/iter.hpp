@@ -37,6 +37,14 @@ void iter(const T* array, const size_t length, F func)
 /*                           PRINT FUNCTIONS                                  */
 /* ************************************************************************** */
 
+/* Template function compatible with iterByValue */
+template <typename T>
+void ft_printCopy(T x)
+{
+    std::cout << x << " ";
+}
+
+//probar con un template que no recibe const &
 /* Print for simple types (int, char, string, Vector, etc.) */
 template <typename T>
 void printTemplate(const T& c)
