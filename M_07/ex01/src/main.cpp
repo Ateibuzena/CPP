@@ -91,8 +91,8 @@ int main(void)
         }
         {
             // Test 2: characters
-            char arrChar[] = {'a', 'b', 'c', 'd'};
-            const size_t lenChar = 4;
+            char            arrChar[] = {'a', 'b', 'c', 'd'};
+            const size_t    lenChar = 4;
 
             std::cout << "Characters (template print): ";
             iter(arrChar, lenChar, printTemplate<char>); // template function
@@ -100,8 +100,8 @@ int main(void)
         }
         {
             // Test 3: strings
-            std::string arrStr[] = {"Hello", "World", "42"};
-            const size_t lenStr = 3;
+            std::string     arrStr[] = {"Hello", "World", "42"};
+            const size_t    lenStr = 3;
 
             std::cout << "Strings (template print): ";
             iter(arrStr, lenStr, printTemplate<std::string>); // template function
@@ -112,7 +112,7 @@ int main(void)
     {
         {
             // Test 1: integers
-            const int             arrInt[] = {1, 2, 3, 4, 5};
+            const int       arrInt[] = {1, 2, 3, 4, 5};
             const size_t    lenInt = 5;
 
             std::cout << "Const Integers (template print): ";
@@ -121,8 +121,8 @@ int main(void)
         }
         {
             // Test 2: characters
-            const char arrChar[] = {'a', 'b', 'c', 'd'};
-            const size_t lenChar = 4;
+            const char      arrChar[] = {'a', 'b', 'c', 'd'};
+            const size_t    lenChar = 4;
 
             std::cout << "Const Characters (template print): ";
             iter(arrChar, lenChar, printTemplate<char>); // template function
@@ -130,8 +130,8 @@ int main(void)
         }
         {
             // Test 3: strings
-            const std::string arrStr[] = {"Hello", "World", "42"};
-            const size_t lenStr = 3;
+            const std::string   arrStr[] = {"Hello", "World", "42"};
+            const size_t        lenStr = 3;
 
             std::cout << "Const Strings (template print): ";
             iter(arrStr, lenStr, printTemplate<std::string>); // template function

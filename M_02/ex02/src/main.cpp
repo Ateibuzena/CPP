@@ -60,6 +60,16 @@ int main( void )
     std::cout << "\nResult is " << result.toFloat() << " as float" << std::endl;
     std::cout << "\nResult is " << result.toInt() << " as integer" << std::endl;
 
+    std::cout << "\n--------------------------TEST------------------------------" << std::endl;
+    
+    Fixed  test;
+
+    std::cout << test << std::endl;
+    std::cout << "\n max between test and 5 is " << test.max(test, Fixed(5)).toInt() << std::endl;
+    std::cout << "\nTest is " << test.getRawBits() << " as fixed-point" << std::endl;
+    std::cout << "\nTest is " << test.toFloat() << " as float" << std::endl;
+    std::cout << "\nTest is " << test.toInt() << " as integer" << std::endl;
+
     std::cout << "\n--------------------------DESTRUCTOR------------------------------" << std::endl;
 
     return (0);
