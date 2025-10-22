@@ -32,6 +32,20 @@ Point::Point(const Point& object)
         << std::endl;
 }
 
+Point&  Point::operator=(const Point& object)
+{
+    std::cout
+        << "\n"
+        << "ℹ️ : Asignation operator"
+        << std::endl;
+    if (this != &object)
+    {
+        // _x and _y are const, cannot be assigned to
+        // This operator should not be used; consider removing it
+    }
+    return (*this);
+}
+
 /*-------------------------------DESTRUCTORS-------------------------------*/
 
 Point::~Point()

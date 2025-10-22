@@ -9,12 +9,12 @@ class   Point
     private:
         const Fixed     _x;
         const Fixed     _y;
-        Point&          operator=(const Point& object); //asignation operator not useful
 
     public:
                         Point(); //default constructor
                         Point(const float xValue, const float yValue); //parameterized constructor
                         Point(const Point& object); //copy constructor
+        Point&          operator=(const Point& object); //asignation operator
                         ~Point(); //destructor
 
         const Fixed&    getX(void) const;
