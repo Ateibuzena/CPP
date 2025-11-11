@@ -3,7 +3,7 @@
 
 # include <iostream>
 # include <stdexcept>
-# include <math.h>
+# include <cmath>
 
 template <typename T>
 class Array
