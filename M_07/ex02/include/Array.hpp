@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <stdexcept>
+# include <math.h>
 
 template <typename T>
 class Array
@@ -59,6 +60,8 @@ std::ostream&                   operator<<(std::ostream& fd, const Array<T>& obj
 
 template <typename T>
 void                            printArray(const Array<T>& arr, const std::string& name);
+
+int                             test(void);
 
 # include "../template/Array.tpp"
 # include "../template/Iterator.tpp"

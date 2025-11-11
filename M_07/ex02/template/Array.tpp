@@ -8,7 +8,7 @@ Array<T>::Array()
         _data(NULL)
         
 {
-
+    std::cout << "My Array class" << std::endl;
 }
 
 template <typename T>
@@ -17,7 +17,7 @@ Array<T>::Array(unsigned int n)
         _data(new T[n]())
         
 {
-
+    std::cout << "My Array class" << std::endl;
 }
 
 template <typename T>
