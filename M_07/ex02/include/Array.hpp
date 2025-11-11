@@ -2,57 +2,67 @@
 #define ARRAY_HPP
 
 # include <iostream>
+# include <stdexcept>
 
 template <typename T>
-
 class Array
 {
     private:
-        T*              _array;
-        unsigned int    _size;
+
+        const unsigned int  _size;
+        T*                  _data;
     
     public:
-                        Array()
-                            :   _array(NULL),
-                                _size(0)
-                        {
-                            std::cout << "Empty array created" << std::endl;
-                        };
+    
+                                Array();
+                                Array(unsigned int sizeValue);
+                                Array(const Array& object);
+        Array&                  operator=(const Array& object);
 
-                        Array(unsigned int sizeValue)
-                            :   _array(new T[sizeValue]()), // Call constructor of T data
-                                _size(sizeValue)
-                        {
+                                ~Array();
 
-                        };
+        unsigned int            size(void) const;
+        const T&                operator[](unsigned int i) const;
 
-                        Array(const Array& object)
-                            :   _array(new T[object._size]()),
-                                _size(object._size)
-                        {
-                            for (unsigned int i = 0; i < _size; i++)
-                                _array[i] = object._array[i];
-                        }
+        T&                      operator[](unsigned int i);
 
-                Array&  operator=(const Array& object)
-                {
-                    if (this != &object)
-                    {
-                        delete[] (_array);
-                        _array = NULL;
-                    }
+        class                   Iterator
+        {
+            private:
 
-                    _size = object._size;
-                    _array = new T[object._size]();
-                    for (unsigned int i = 0; i < _size; i++)
-                        _array[i] = object._array[i];
+                T*          _ptr;
 
-                    return (*this);
-                }
+            public:
+                
+                                Iterator(T* ptr);
+                Iterator&       operator=(const Iterator& object);
 
-                        ~Array()
-                        {
-                            delete[] (_array);
-                            _array = NULL;
-                        };
-}
+                const T&        operator*() const;
+                T&              operator*();
+
+                const Iterator& operator++();
+                Iterator        operator++(int);
+
+                bool            operator!=(const Iterator& object) const;
+                bool            operator==(const Iterator& object) const;
+        };
+
+        Iterator                begin();
+        Iterator                end();
+
+        const Iterator          begin() const;
+        const Iterator          end() const;
+};
+
+template <typename T>
+std::ostream&                   operator<<(std::ostream& fd, const Array<T>& object);
+
+template <typename T>
+void                            printArray(const Array<T>& arr, const std::string& name);
+
+# include "../template/Array.tpp"
+# include "../template/Iterator.tpp"
+# include "../template/Utils.tpp"
+
+#endif
+           
