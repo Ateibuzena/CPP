@@ -350,7 +350,7 @@ static void    testMyArrayOfSets(void)
         std::cout << "Value not found using std::find" << std::endl;
 }
 
-/*static void    testSTLVector(void)
+static void    testSTLVector(void)
 {
     std::cout << "\n----- Testing easyfind with STL Vector -----\n" << std::endl;
 
@@ -381,42 +381,18 @@ static void    testMyArrayOfSets(void)
     {
         std::cerr << e.what() << '\n';
     }
-}*/
 
-/*static void    testSTLMap(void)
-{
-    std::cout << "\n----- Testing easyfind with STL Map -----\n" << std::endl;
-
-    unsigned int i = 0;
-
-    std::cout << "Creating Map of Integers to Strings with 5 elements:" << std::endl;
-    std::map< int, std::string > map;
-
-    std::cout << "Filling Map of Integers to Strings with values:" << std::endl;
-    while (i < 5)
+    result = std::find(vector.begin(), vector.end(), set);
+    if (result != vector.end())
     {
-        map[i + 1] = "Value" + to_string_c98(i + 1);
-        i++;
+        std::cout << "Value found using std::find: ";
+        std::cout << *result << std::endl;
     }
-    //printMap(map, "map ");
+    else
+        std::cout << "Value not found using std::find" << std::endl;
+}
 
-    std::cout << "Creating Integer to search for:" << std::endl;
-    int set = 3;
-
-    std::cout << "\nSearching for key " << set << " in the Map of Integers to Strings:" << std::endl;
-    std::map< int, std::string >::iterator result;    
-    try
-    {
-        result = easyfind(map, set);
-        std::cout << "Value found: {" << result->first << ": \"" << result->second << "\"}" << std::endl;
-    }
-    catch(std::invalid_argument& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-}*/
-
-/*static void    testSTLSet(void)
+static void    testSTLSet(void)
 {
     std::cout << "\n----- Testing easyfind with STL Set -----\n" << std::endl;
 
@@ -431,7 +407,7 @@ static void    testMyArrayOfSets(void)
         set.insert(i + 1);
         i++;
     }
-    //printSet(set, "set ");
+    printSet(set, "set ");
 
     std::cout << "Creating Integer to search for:" << std::endl;
     int n = 3;
@@ -447,7 +423,59 @@ static void    testMyArrayOfSets(void)
     {
         std::cerr << e.what() << '\n';
     }
-}*/
+
+    result = std::find(set.begin(), set.end(), n);
+    if (result != set.end())
+    {
+        std::cout << "Value found using std::find: ";
+        std::cout << *result << std::endl;
+    }
+    else
+        std::cout << "Value not found using std::find" << std::endl;
+}
+
+static void    testSTLMap(void)
+{
+    std::cout << "\n----- Testing easyfind with STL Map -----\n" << std::endl;
+
+    unsigned int i = 0;
+
+    std::cout << "Creating Map of Integers to Strings with 5 elements:" << std::endl;
+    std::map< int, std::string > map;
+
+    std::cout << "Filling Map of Integers to Strings with values:" << std::endl;
+    while (i < 5)
+    {
+        map[i + 1] = "Value" + to_string_c98(i + 1);
+        i++;
+    }
+    printMap(map, "map ");
+
+    std::cout << "Creating Integer to search for:" << std::endl;
+    std::pair< const int, std::string > set = std::make_pair(3, "Value3");
+
+    std::cout << "\nSearching for key " << set.first << " in the Map of Integers to Strings:" << std::endl;
+    std::map< int, std::string >::iterator result;    
+    try
+    {
+        result = easyfind(map, set);
+        std::cout << "Value found: {" << result->first << ": \"" << result->second << "\"}" << std::endl;
+    }
+    catch(std::invalid_argument& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    result = std::find(map.begin(), map.end(), set);
+    if (result != map.end())
+    {
+        std::cout << "Value found using std::find: ";
+        std::cout << "{" << result->first << ": \"" << result->second << "\"}" << std::endl;
+    }
+    else
+        std::cout << "Value not found using std::find" << std::endl;
+
+}
 
 int main(void)
 {
@@ -459,9 +487,14 @@ int main(void)
     testMyArrayOfStrings();
     testMyArrayOfSets();
 
-    /*testSTLVector();
+    Array< int > otro = Array< int >(10);
+    Array< int > jaja = Array< int >(5);
+
+    jaja = otro;
+
+    testSTLVector();
     testSTLMap();
-    testSTLSet();*/
+    testSTLSet();
 
     return (0);
 }
