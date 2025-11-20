@@ -1,4 +1,4 @@
-#include "Array.hpp"
+#include "../include/Array.hpp"
 #include <cassert>
 
 int test(void)
@@ -157,5 +157,5 @@ int test(void)
     }
 
     std::cout << "\n✅ EVERYTHING IS OK ✅" << std::endl;
-    return 0;
+    return (0);
 }
