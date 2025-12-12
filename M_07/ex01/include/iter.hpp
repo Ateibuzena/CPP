@@ -14,6 +14,24 @@
  */
 
 /* ------------------ non-const iter (elements may be modified) ------------------ */
+/*template <typename T, typename F>
+void iter(T* array, const size_t length, F func(T&))
+{
+    std::cout << "[ ";
+    for (size_t i = 0; i < length; ++i)
+        func(array[i]);
+    std::cout << "]" << std::endl;
+}
+
+template <typename T, typename F>
+void iter(const T* array, const size_t length, F func(T&))
+{
+    std::cout << "[ ";
+    for (size_t i = 0; i < length; ++i)
+        func(array[i]);
+    std::cout << "]" << std::endl;
+}*/
+
 template <typename T, typename F>
 void iter(T* array, const size_t length, F func)
 {
@@ -23,15 +41,35 @@ void iter(T* array, const size_t length, F func)
     std::cout << "]" << std::endl;
 }
 
-/* ------------------ const iter (read-only elements) ------------------ */
+/*
 template <typename T, typename F>
-void iter(const T* array, const size_t length, F func)
+void iter(const T* array, const size_t length, F func(T))
 {
+    std::cout << "[ ";
+    for (size_t i = 0; i < length; ++i)
+        func(array[i]);
+    std::cout << "]" << std::endl;
+}
+
+template <typename T, typename F>
+void iter(T* array, const size_t length, F func(const T))
+{
+    std::cout << "[ ";
+    for (size_t i = 0; i < length; ++i)
+        func(array[i]);
+    std::cout << "]" << std::endl;
+}*/
+
+/* ------------------ const iter (read-only elements) ------------------ */
+/*template <typename T, typename F>
+void iter(const T* array, const size_t length, F func(const T))
+{
+    std::cout << "AAAAAAA" << std::endl;
     std::cout << "[ ";
     for (size_t i = 0; i < length; ++i)
         func(array[i]);   // func should be void func(const T&) or void func(T) that can accept const T
     std::cout << "]" << std::endl;
-}
+}*/
 
 /* ************************************************************************** */
 /*                           PRINT FUNCTIONS                                  */

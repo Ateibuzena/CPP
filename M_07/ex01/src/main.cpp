@@ -4,14 +4,29 @@
 #include "iter.hpp"
 #include "Vector.hpp"
 
-static double   ft_halfInt(int x)
+static void    ft_print9Char(char& n)
+{
+    std::cout << n++ << std::endl;
+}
+
+/*static double   ft_halfInt(int x)
 {
     return (x / 2.0);
-};
+};*/
 
 int main(void)
 {
     {
+        const char             *array = "ABCDE";
+        const size_t    lenInt = 5;
+
+
+        iter(array, lenInt, ft_print9Char);
+
+        std::cout << *array << std::endl;
+    }
+    
+    /*{
         std::cout << "=== LABORATORY: iter example templates with T = int and D = double ===\n\n";
 
         {
@@ -227,6 +242,7 @@ int main(void)
 
             std::cout << "\n=== END OF TESTING VECTOR CLASS AND ITER ===\n" << std::endl;
         }
-    }
+    }*/
+
     return (0);
 }
