@@ -1,11 +1,11 @@
-NAME = bitcoin
+NAME = BitcoinExchange
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinclude -g
 
-SRC_DIR = src
-OBJ_DIR = obj
+SRC_DIR = source
+OBJ_DIR = object
 
 SRCS := $(shell find $(SRC_DIR) -type f -name "*.cpp")
 OBJS = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
@@ -48,3 +48,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+

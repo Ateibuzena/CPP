@@ -1,35 +1,86 @@
-#pragma once
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
-#include <map>
-#include <iostream>
-#include <exception>
+# include <map>
+# include <string>
+# include <iostream> // para std::cout y std::cerr para imprimir mensajes
+# include <fstream> // para std::ifstream para leer archivos
+# include <sstream> // para std::istringstream para parsear líneas
 
 class BitcoinExchange
 {
     private:
+        // map keep date sorted automatically
+        // easy to find closest previous date with lower_bound
+        std::map<std::string, float>    _database;
 
-        std::map<std::string, double>   _bitcoinPrices;
-      
-        bool                            isValidDate(const std::string& date);
-        bool                            isValidValue(const std::string& valueStr, double& out);
-        bool                            isLeapYear(int year);
+        // Disable copy constructor and assignment operator
+                                        BitcoinExchange(const BitcoinExchange& object)
+                                            :   _database(object._database)
+                                        { 
+
+                                        }
+
+        // Disable assignment operator
+                                        BitcoinExchange& operator=(const BitcoinExchange& object)
+                                        { 
+                                            if (this != &object)
+                                            {
+                                                this->_database = object._database;
+                                            }
+                                            return (*this);
+                                        }
+
+        float                           getExchangeRate(const std::string& date) const;
+
+        void                            printDatabase(void) const
+        {
+            std::map<std::string, float>::const_iterator    it = _database.begin();
+            std::map<std::string, float>::const_iterator    ite = _database.end();
+
+            while (it != ite)
+            {
+                std::cout << it->first
+                        << " => "
+                        << it->second
+                        << std::endl;
+                it++;
+            }
+        }
     
-        bool                            getPriceForDate(const std::string& date, double& price);
-
     public:
-
+        // Default constructor and destructor enabled
+        // because we only want one instance of the class
                                         BitcoinExchange();
-                                        BitcoinExchange(const std::string& filePath = "data.csv");
-                                        BitcoinExchange(const BitcoinExchange& object);
-        BitcoinExchange&                operator=(const BitcoinExchange& object);
-
                                         ~BitcoinExchange();
 
-        void                            loadDatabase(const std::string& path);
+        // I need to load the database and process input in main
+        void                            loadDatabase(const std::string& filename);
+        void                            processInput(const std::string& filename) const;
 
+        // Error class
+        class Exception : public std::exception
+        {
+            private:
+                std::string     _message;
 
-        void                            processInputFile(const std::string& path);
+            public:
+                Exception(const std::string& message)
+                    :   _message(message)
+                {
+
+                }
+                // Override what() of std::exception
+                virtual const char* what() const throw()
+                {
+                    return (_message.c_str());
+                }
+                // Destructor virtual if herits from this class
+                virtual ~Exception() throw()
+                {
+
+                }
+        };
 };
 
-std::string                             trim(const std::string& s);
-const std::map<int, int>                getMapMonthDays(void);
+#endif
