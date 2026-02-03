@@ -2,7 +2,7 @@ NAME = RPN
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinclude -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Iinclude
 
 SRC_DIR = source
 OBJ_DIR = object

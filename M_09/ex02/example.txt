@@ -1,0 +1,21 @@
+mergeInsertSort([5,3,9,7,4,2,8,1], 0, 7)
+│
+├─ mergeInsertSort([5,3,9,7], 0, 3)
+│  │
+│  ├─ mergeInsertSort([5,3], 0, 1)
+│  │  ├─ insertionSort([5,3])     // ⬇️ Máxima profundidad
+│  │  └─ RETORNA [3,5]            // ⬆️ Empieza a subir
+│  │
+│  ├─ mergeInsertSort([9,7], 2, 3)
+│  │  ├─ insertionSort([9,7])     // ⬇️ Máxima profundidad
+│  │  └─ RETORNA [7,9]            // ⬆️ Empieza a subir
+│  │
+│  └─ merge([3,5], [7,9])         // ⬆️ MERGE al subir
+│     └─ RETORNA [3,5,7,9]
+│
+├─ mergeInsertSort([4,2,8,1], 4, 7)
+│  │  ... (mismo proceso)
+│  └─ RETORNA [1,2,4,8]
+│
+└─ merge([3,5,7,9], [1,2,4,8])   // ⬆️ MERGE FINAL
+   └─ RETORNA [1,2,3,4,5,7,8,9]
