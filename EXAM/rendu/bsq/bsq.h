@@ -30,23 +30,14 @@ typedef struct s_box
 }	t_box;
 
 void	free_map(char **map);
-
 int		map_error(char *line, char **map);
-
 char	*strdup_len(char *str, int len);
-
 int		min3(int a, int b, int c);
-
 int		load_elements(FILE *fd, t_tiles *tiles);
-
 int		load_map(FILE *fd, t_map *map, t_tiles *tiles);
-
 void	find_square(t_map *map, t_tiles *tiles, t_box *box);
-
 void	draw_square(t_map *map, t_tiles *tiles, t_box *box);
-
 int		execute_bsq(FILE *fd);
-
 int		convert_file_pointer(char *name);
 
 #endif

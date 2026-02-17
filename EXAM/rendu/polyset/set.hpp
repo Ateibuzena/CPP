@@ -6,48 +6,44 @@ class   set
 {
     private:
         searchable_bag& bag;
+			set() = { }
+	                set(const set& object) { }
+        		set&    operator=(const set& object) { }
 
     public:
-                set() = delete;
-                set(const set& object) = delete;
-        set&    operator=(const set& object) = delete;
+		        set(searchable_bag& s_bag) : bag(s_bag) { }
+		
+			bool    has(int n) const
+		        {
+		            return (bag.has(n));
+		        }
 
-                set(searchable_bag& s_bag) : bag(s_bag)
-                {
+		        void    insert(int n) const
+		        {	
+		            if (!(this)->has(n))
+                		bag.insert(n);
+		        }
 
-                }
-        
-        bool    has(int n) const
-        {
-            return (bag.has(n));
-        }
+		        void    insert(int *data, int size) const
+		        {
+		            for (int i = 0; i < size; i++)
+                		this->insert(data[i]);
+		        }
 
-        void    insert(int n) const
-        {
-            if (!(this)->has(n))
-                bag.insert(n);
-        }
+		        void    print(void) const
+		        {
+		            bag.print();
+		        }
 
-        void    insert(int *data, int size) const
-        {
-            for (int i = 0; i < size; i++)
-                this->insert(data[i]);
-        }
+		        void    clear(void)
+		        {
+		            bag.clear();
+		        }
 
-        void    print(void) const
-        {
-            bag.print();
-        }
+		        const   searchable_bag& get_bag(void)
+		        {
+		            return (this->bag);
+		        }
 
-        void    clear(void)
-        {
-            bag.clear();
-        }
-
-        const   searchable_bag& get_bag(void)
-        {
-            return (this->bag);
-        }
-
-        ~set() {}
+		        ~set() {}
 };
